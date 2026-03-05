@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Modules — hpsolver documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <link rel="stylesheet" href="docpage.css">
+    <script src="docpage.js"></script>
+</head>
+
+<body>
+
+    <div id="top-panel">
+        <div id="page-logo"></div>
+        <div id="top-panel-tool-bar">
+            <div id="global-toc-btn" class="top-panel-btn" onclick="switchTOC(this)"></div>
+            <div id="local-toc-btn" class="top-panel-btn" onclick="switchTOC(this)"></div>
+            <div id="home-page-btn" class="top-panel-btn" onclick="gotoHomePage()"></div>
+        </div>
+    </div>
+
+    <div id="global-toc-box" class="toc-box">
+        <div class="toc-box__header">
+            <p>Contents</p><button onclick="closeTOC(this)">&#x2715;</button>
+        </div>
+        <div id="global-toc-box__text" class="toc-box__textbox"></div>
+    </div>
+    <div id="local-toc-box" class="toc-box">
+        <div class="toc-box__header">
+            <p>On this page</p><button onclick="closeTOC(this)">&#x2715;</button>
+        </div>
+        <div id="local-toc-box__text" class="toc-box__textbox">
+            <p>
+            <ul>
+                <li><a href="#hpsolver.sem">hpsolver.sem</a>
+                    <ul>
+                        <li><a href="#newroot">newroot()</a></li>
+                        <li><a href="#hpsroot">HPSRoot</a>
+                            <ul>
+                                <li><a href="#reset">reset()</a></li>
+                                <li><a href="#activate">activate()</a></li>
+                                <li><a href="#setcoeffs">setcoeffs()</a></li>
+                                <li><a href="#build_operator">build_operator()</a></li>
+                                <li><a href="#build_solution">build_solution()</a></li>
+                                <li><a href="#dtn_mat">dtn_mat()</a></li>
+                                <li><a href="#dtn_vec">dtn_vec()</a></li>
+                                <li><a href="#vmesh">vmesh()</a></li>
+                                <li><a href="#hmesh">hmesh()</a></li>
+                                <li><a href="#vdata">vdata()</a></li>
+                                <li><a href="#hdata">hdata()</a></li>
+                                <li><a href="#vgrad">vgrad()</a></li>
+                                <li><a href="#hgrad">hgrad()</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <div id="content-box">
+        <div id="title-box">
+            <h1 id="title-box__title"></h1>
+            <h2 id="title-box__annotation"></h2>
+            <hr>
+        </div>
+        <div id="doc-box">
+<div class="toc-anchor"></div><h1>hpsolver.sem</h1>
+
+<p>Spectral element solver.</p>
+
+<div class="toc-anchor"></div><h2>newroot()</h2>
+
+<pre class="py-sign">hpsolver.sem.<b>newroot</b>(x_1, x_2)</pre>
+
+<p>Creates new HPS root.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>x_1</code> : <em>float</em></span></p>
+
+<dl><dd>
+  West endpoint of the interval.
+</dd></dl>
+
+<p><span class="vardef"><code>x_2</code> : <em>float</em></span></p>
+
+<dl><dd>
+  East endpoint of the interval.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>HPSNode</em></span></p>
+
+<dl><dd>
+  Root of the HPS tree.
+</dd></dl>
+
+<div class="toc-anchor"></div><h2>HPSRoot</h2>
+
+<pre class="py-sign"><b><em>class</em></b> hpsolver.sem.<b>HPSRoot</b>(rank)</pre>
+
+<p>Root of the HPS tree.</p>
+
+<p><b>Properties</b></p>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Decription</th>
+    </tr>
+    <tr>
+        <td><code>u_1</code></td>
+        <td>Solution value at the west endpoint.</td>
+    </tr>
+    <tr>
+        <td><code>u_2</code></td>
+        <td>Solution value at the east endpoint.</td>
+    </tr>
+</table>
+
+<div class="toc-anchor"></div><h3>reset()</h3>
+
+<pre class="py-sign">HPSRoot.<b>reset</b>(<em>self</em>)</pre>
+
+<p>Deactivates the tree after computation.</p>
+
+<div class="toc-anchor"></div><h3>activate()</h3>
+
+<pre class="py-sign">HPSRoot.<b>activate</b>(<em>self</em>, order) → <em>None</em></pre>
+
+<p>Activates the tree for computation.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>order</code> : <em>int</em></span></p>
+
+<dl><dd>
+  Order of the scheme (2-6).
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>setcoeffs()</h3>
+
+<pre class="py-sign">HPSRoot.<b>setcoeffs</b>(<em>self</em>, data)</pre>
+
+<p>Defines the equation coefficients.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>data</code> : <em>dict</em></span></p>
+
+<dl><dd>
+  Provides equation coefficients as lists.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>build_operator()</h3>
+
+<pre class="py-sign">HPSRoot.<b>build_operator</b>(<em>self</em>) → <em>None</em></pre>
+
+<p>Builds the solution operator.</p>
+
+<div class="toc-anchor"></div><h3>build_solution()</h3>
+
+<pre class="py-sign">HPSRoot.<b>build_solution</b>(<em>self</em>) → <em>None</em></pre>
+
+<p>Builds the solution after boundary conditions are applied.</p>
+
+<div class="toc-anchor"></div><h3>dtn_mat()</h3>
+
+<pre class="py-sign">HPSRoot.<b>dtn_mat</b>(<em>self</em>)</pre>
+
+<p>Returns the matrix of the DtN operator.</p>
+
+<div class="toc-anchor"></div><h3>dtn_vec()</h3>
+
+<pre class="py-sign">HPSRoot.<b>dtn_vec</b>(<em>self</em>)</pre>
+
+<p>Returns the vector of the DtN operator.</p>
+
+<div class="toc-anchor"></div><h3>vmesh()</h3>
+
+<pre class="py-sign">HPSRoot.<b>vmesh</b>(<em>self</em>)</pre>
+
+<p>Retrieves mesh elements and stacks them vertically.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>root</code> : <em>HPSNode</em></span></p>
+
+<dl><dd>
+  Root of the HPS tree.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>2d-array</em></span></p>
+
+<dl><dd>
+  Mesh as a vertical stack of elements.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>hmesh()</h3>
+
+<pre class="py-sign">HPSRoot.<b>hmesh</b>(<em>self</em>)</pre>
+
+<p>Retrieves mesh elements and stacks them horizontally.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>root</code> : <em>HPSNode</em></span></p>
+
+<dl><dd>
+  Root of the HPS tree.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>flat-array</em></span></p>
+
+<dl><dd>
+  Mesh as a horizontal stack of elements.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>vdata()</h3>
+
+<pre class="py-sign">HPSRoot.<b>vdata</b>(<em>self</em>)</pre>
+
+<p>Retrieves data from elements and stacks them vertically.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>root</code> : <em>HPSNode</em></span></p>
+
+<dl><dd>
+  Root of the HPS tree.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>2d-array</em></span></p>
+
+<dl><dd>
+  Data from elements stacked vertically.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>hdata()</h3>
+
+<pre class="py-sign">HPSRoot.<b>hdata</b>(<em>self</em>)</pre>
+
+<p>Retrieves data from elements and stacks them horizontally.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>root</code> : <em>HPSNode</em></span></p>
+
+<dl><dd>
+  Root of the HPS tree.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>flat-array</em></span></p>
+
+<dl><dd>
+  Data from elements stacked horizontally.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>vgrad()</h3>
+
+<pre class="py-sign">HPSRoot.<b>vgrad</b>(<em>self</em>)</pre>
+
+<p>Retrieves gradient from elements and stacks it vertically.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>root</code> : <em>HPSNode</em></span></p>
+
+<dl><dd>
+  Root of the HPS tree.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>2d-array</em></span></p>
+
+<dl><dd>
+  Gradient from elements stacked vertically.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>hgrad()</h3>
+
+<pre class="py-sign">HPSRoot.<b>hgrad</b>(<em>self</em>)</pre>
+
+<p>Retrieves data from elements and stacks it horizontally.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>root</code> : <em>HPSNode</em></span></p>
+
+<dl><dd>
+  Root of the HPS tree.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>flat-array</em></span></p>
+
+<dl><dd>
+  Gradient from elements stacked horizontally.
+</dd></dl>
+
+<hr>
+        </div>
+        <p id="footnote">Copyright &copy; <span id="year"></span>, Igor Semenov.</p>
+    </div>
+
+    <footer></footer>
+
+    <script>
+        setDocPage();
+    </script>
+
+</body>
+
+</html>

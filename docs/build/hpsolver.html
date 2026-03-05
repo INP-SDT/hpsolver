@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Modules — hpsolver documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <link rel="stylesheet" href="docpage.css">
+    <script src="docpage.js"></script>
+</head>
+
+<body>
+
+    <div id="top-panel">
+        <div id="page-logo"></div>
+        <div id="top-panel-tool-bar">
+            <div id="global-toc-btn" class="top-panel-btn" onclick="switchTOC(this)"></div>
+            <div id="local-toc-btn" class="top-panel-btn" onclick="switchTOC(this)"></div>
+            <div id="home-page-btn" class="top-panel-btn" onclick="gotoHomePage()"></div>
+        </div>
+    </div>
+
+    <div id="global-toc-box" class="toc-box">
+        <div class="toc-box__header">
+            <p>Contents</p><button onclick="closeTOC(this)">&#x2715;</button>
+        </div>
+        <div id="global-toc-box__text" class="toc-box__textbox"></div>
+    </div>
+    <div id="local-toc-box" class="toc-box">
+        <div class="toc-box__header">
+            <p>On this page</p><button onclick="closeTOC(this)">&#x2715;</button>
+        </div>
+        <div id="local-toc-box__text" class="toc-box__textbox">
+            <p>
+            <ul>
+                <li><a href="#annotations">Annotations</a></li>
+                <li><a href="#reference">Reference</a>
+                    <ul>
+                        <li><a href="#hpsolver.sem">hpsolver.sem</a></li>
+                        <li><a href="#hpsolver.hps">hpsolver.hps</a></li>
+                        <li><a href="#hpsolver.polys">hpsolver.polys</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <div id="content-box">
+        <div id="title-box">
+            <h1 id="title-box__title">hpsolver — Modules</h1>
+            <h2 id="title-box__annotation"></h2>
+            <hr>
+        </div>
+        <div id="doc-box">
+<div class="toc-anchor"></div><h2>Annotations</h2>
+
+<table>
+    <tr>
+        <th>Module</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><b>hpsolver.sem</b></td>
+        <td>Spectral element solver.</td>
+    </tr>
+    <tr>
+        <td><b>hpsolver.hps</b></td>
+        <td>HPS binary tree.</td>
+    </tr>
+    <tr>
+        <td><b>hpsolver.polys</b></td>
+        <td>Polynomial bases.</td>
+    </tr>
+</table>
+
+<div class="toc-anchor"></div><h2>Reference</h2>
+
+<div class="toc-anchor"></div><h3>hpsolver.sem</h3>
+
+<p>
+<ul class="ref-list" id="mod-refs">
+    <li><a href="hpsolver.sem.html#hpsolver.sem">hpsolver.sem</a>
+        <ul>
+            <li><a href="hpsolver.sem.html#newroot">newroot()</a></li>
+            <li><a href="hpsolver.sem.html#hpsroot">HPSRoot</a>
+                <ul>
+                    <li><a href="hpsolver.sem.html#reset">reset()</a></li>
+                    <li><a href="hpsolver.sem.html#activate">activate()</a></li>
+                    <li><a href="hpsolver.sem.html#setcoeffs">setcoeffs()</a></li>
+                    <li><a href="hpsolver.sem.html#build_operator">build_operator()</a></li>
+                    <li><a href="hpsolver.sem.html#build_solution">build_solution()</a></li>
+                    <li><a href="hpsolver.sem.html#dtn_mat">dtn_mat()</a></li>
+                    <li><a href="hpsolver.sem.html#dtn_vec">dtn_vec()</a></li>
+                    <li><a href="hpsolver.sem.html#vmesh">vmesh()</a></li>
+                    <li><a href="hpsolver.sem.html#hmesh">hmesh()</a></li>
+                    <li><a href="hpsolver.sem.html#vdata">vdata()</a></li>
+                    <li><a href="hpsolver.sem.html#hdata">hdata()</a></li>
+                    <li><a href="hpsolver.sem.html#vgrad">vgrad()</a></li>
+                    <li><a href="hpsolver.sem.html#hgrad">hgrad()</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</p>
+
+<div class="toc-anchor"></div><h3>hpsolver.hps</h3>
+
+<p>
+<ul class="ref-list" id="mod-refs">
+    <li><a href="hpsolver.hps.html#hpsolver.hps">hpsolver.hps</a>
+        <ul>
+            <li><a href="hpsolver.hps.html#newgeom">newgeom()</a></li>
+            <li><a href="hpsolver.hps.html#newpsn">newpsn()</a></li>
+            <li><a href="hpsolver.hps.html#hpsnode">HPSNode</a>
+                <ul>
+                    <li><a href="hpsolver.hps.html#add_nodes">add_nodes()</a></li>
+                    <li><a href="hpsolver.hps.html#del_nodes">del_nodes()</a></li>
+                    <li><a href="hpsolver.hps.html#get_nodes">get_nodes()</a></li>
+                    <li><a href="hpsolver.hps.html#set_nodes">set_nodes()</a></li>
+                    <li><a href="hpsolver.hps.html#run_nodes">run_nodes()</a></li>
+                    <li><a href="hpsolver.hps.html#get_tree">get_tree()</a></li>
+                    <li><a href="hpsolver.hps.html#make_sol">make_sol()</a></li>
+                    <li><a href="hpsolver.hps.html#make_opr">make_opr()</a></li>
+                    <li><a href="hpsolver.hps.html#make_dtn_leaf">make_dtn_leaf()</a></li>
+                    <li><a href="hpsolver.hps.html#make_sol_leaf">make_sol_leaf()</a></li>
+                </ul>
+            </li>
+            <li><a href="hpsolver.hps.html#hpsdata">HPSData</a>
+                <ul>
+                    <li><a href="hpsolver.hps.html#new_body_west">new_body_west()</a></li>
+                    <li><a href="hpsolver.hps.html#new_body_east">new_body_east()</a></li>
+                    <li><a href="hpsolver.hps.html#new_body_join">new_body_join()</a></li>
+                    <li><a href="hpsolver.hps.html#mat_from_body">mat_from_body()</a></li>
+                    <li><a href="hpsolver.hps.html#vec_from_body">vec_from_body()</a></li>
+                    <li><a href="hpsolver.hps.html#make_sol-1">make_sol()</a></li>
+                </ul>
+            </li>
+            <li><a href="hpsolver.hps.html#hpsgeom">HPSGeom</a></li>
+            <li><a href="hpsolver.hps.html#hpspoisson">HPSPoisson</a></li>
+        </ul>
+    </li>
+</ul>
+</p>
+
+<div class="toc-anchor"></div><h3>hpsolver.polys</h3>
+
+<p>
+<ul class="ref-list" id="mod-refs">
+    <li><a href="hpsolver.polys.html#hpsolver.polys">hpsolver.polys</a>
+        <ul>
+            <li><a href="hpsolver.polys.html#polybasis">PolyBasis</a>
+                <ul>
+                    <li><a href="hpsolver.polys.html#polys">polys()</a></li>
+                    <li><a href="hpsolver.polys.html#derivs">derivs()</a></li>
+                    <li><a href="hpsolver.polys.html#integax">integax()</a></li>
+                    <li><a href="hpsolver.polys.html#integxb">integxb()</a></li>
+                </ul>
+            </li>
+            <li><a href="hpsolver.polys.html#polyopr">PolyOpr</a>
+                <ul>
+                    <li><a href="hpsolver.polys.html#with_nodes">with_nodes()</a></li>
+                    <li><a href="hpsolver.polys.html#with_polys">with_polys()</a></li>
+                    <li><a href="hpsolver.polys.html#asdict">asdict()</a></li>
+                    <li><a href="hpsolver.polys.html#asmat">asmat()</a></li>
+                </ul>
+            </li>
+            <li><a href="hpsolver.polys.html#nodeset">NodeSet</a></li>
+            <li><a href="hpsolver.polys.html#legendre">Legendre</a></li>
+            <li><a href="hpsolver.polys.html#chebyshev">Chebyshev</a></li>
+            <li><a href="hpsolver.polys.html#lgngauss">lgngauss()</a></li>
+            <li><a href="hpsolver.polys.html#lbtgauss">lbtgauss()</a></li>
+            <li><a href="hpsolver.polys.html#chbgauss">chbgauss()</a></li>
+            <li><a href="hpsolver.polys.html#chblobatto">chblobatto()</a></li>
+        </ul>
+    </li>
+</ul>
+</p>
+
+<hr>
+        </div>
+        <p id="footnote">Copyright &copy; <span id="year"></span>, Igor Semenov.</p>
+    </div>
+
+    <footer></footer>
+
+    <script>
+        setDocPage();
+    </script>
+
+</body>
+
+</html>

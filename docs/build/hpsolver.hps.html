@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Modules — hpsolver documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <link rel="stylesheet" href="docpage.css">
+    <script src="docpage.js"></script>
+</head>
+
+<body>
+
+    <div id="top-panel">
+        <div id="page-logo"></div>
+        <div id="top-panel-tool-bar">
+            <div id="global-toc-btn" class="top-panel-btn" onclick="switchTOC(this)"></div>
+            <div id="local-toc-btn" class="top-panel-btn" onclick="switchTOC(this)"></div>
+            <div id="home-page-btn" class="top-panel-btn" onclick="gotoHomePage()"></div>
+        </div>
+    </div>
+
+    <div id="global-toc-box" class="toc-box">
+        <div class="toc-box__header">
+            <p>Contents</p><button onclick="closeTOC(this)">&#x2715;</button>
+        </div>
+        <div id="global-toc-box__text" class="toc-box__textbox"></div>
+    </div>
+    <div id="local-toc-box" class="toc-box">
+        <div class="toc-box__header">
+            <p>On this page</p><button onclick="closeTOC(this)">&#x2715;</button>
+        </div>
+        <div id="local-toc-box__text" class="toc-box__textbox">
+            <p>
+            <ul>
+                <li><a href="#hpsolver.hps">hpsolver.hps</a>
+                    <ul>
+                        <li><a href="#newgeom">newgeom()</a></li>
+                        <li><a href="#newpsn">newpsn()</a></li>
+                        <li><a href="#hpsnode">HPSNode</a>
+                            <ul>
+                                <li><a href="#add_nodes">add_nodes()</a></li>
+                                <li><a href="#del_nodes">del_nodes()</a></li>
+                                <li><a href="#get_nodes">get_nodes()</a></li>
+                                <li><a href="#set_nodes">set_nodes()</a></li>
+                                <li><a href="#run_nodes">run_nodes()</a></li>
+                                <li><a href="#get_tree">get_tree()</a></li>
+                                <li><a href="#make_sol">make_sol()</a></li>
+                                <li><a href="#make_opr">make_opr()</a></li>
+                                <li><a href="#make_dtn_leaf">make_dtn_leaf()</a></li>
+                                <li><a href="#make_sol_leaf">make_sol_leaf()</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#hpsdata">HPSData</a>
+                            <ul>
+                                <li><a href="#new_body_west">new_body_west()</a></li>
+                                <li><a href="#new_body_east">new_body_east()</a></li>
+                                <li><a href="#new_body_join">new_body_join()</a></li>
+                                <li><a href="#mat_from_body">mat_from_body()</a></li>
+                                <li><a href="#vec_from_body">vec_from_body()</a></li>
+                                <li><a href="#make_sol-1">make_sol()</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#hpsgeom">HPSGeom</a></li>
+                        <li><a href="#hpspoisson">HPSPoisson</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+    <div id="content-box">
+        <div id="title-box">
+            <h1 id="title-box__title"></h1>
+            <h2 id="title-box__annotation"></h2>
+            <hr>
+        </div>
+        <div id="doc-box">
+<div class="toc-anchor"></div><h1>hpsolver.hps</h1>
+
+<p>HPS binary tree.</p>
+
+<div class="toc-anchor"></div><h2>newgeom()</h2>
+
+<pre class="py-sign">hpsolver.hps.<b>newgeom</b>(x_1, x_2)</pre>
+
+<p>Creates a new HPS node with HPS-Geometry data.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>x_1</code> : <em>float</em></span></p>
+
+<dl><dd>
+  West endpoint of the interval.
+</dd></dl>
+
+<p><span class="vardef"><code>x_2</code> : <em>float</em></span></p>
+
+<dl><dd>
+  East endpoint of the interval.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>HPSNode</em></span></p>
+
+<dl><dd>
+  HPS node with HPS-Geometry data.
+</dd></dl>
+
+<div class="toc-anchor"></div><h2>newpsn()</h2>
+
+<pre class="py-sign">hpsolver.hps.<b>newpsn</b>(x_1, x_2)</pre>
+
+<p>Creates a new HPS node with HPS-Poisson data.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>x_1</code> : <em>float</em></span></p>
+
+<dl><dd>
+  West endpoint of the interval.
+</dd></dl>
+
+<p><span class="vardef"><code>x_2</code> : <em>float</em></span></p>
+
+<dl><dd>
+  East endpoint of the interval.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>HPSNode</em></span></p>
+
+<dl><dd>
+  HPS node with HPS-Poisson data.
+</dd></dl>
+
+<div class="toc-anchor"></div><h2>HPSNode</h2>
+
+<pre class="py-sign"><b><em>class</em></b> hpsolver.hps.<b>HPSNode</b>(rank)</pre>
+
+<p>1D HPS node.</p>
+
+<div class="toc-anchor"></div><h3>add_nodes()</h3>
+
+<pre class="py-sign">HPSNode.<b>add_nodes</b>(<em>self</em>, mask=<span>None</span>)</pre>
+
+<p>Adds nodes to the unit.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>mask</code> : <em>Callable = None</em></span></p>
+
+<dl><dd>
+  Boolean predicate that selects the nodes to expand (a).
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>self</em></span></p>
+
+<dl><dd>
+  Node itself.
+</dd></dl>
+
+<p><b>Notes</b></p>
+
+<p>(a) By default, all leaf nodes are expanded.</p>
+
+<div class="toc-anchor"></div><h3>del_nodes()</h3>
+
+<pre class="py-sign">HPSNode.<b>del_nodes</b>(<em>self</em>, mask=<span>None</span>)</pre>
+
+<p>Removes nodes from the unit.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>mask</code> : <em>Callable = None</em></span></p>
+
+<dl><dd>
+  Boolean predicate that selects the nodes to delete (a).
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>self</em></span></p>
+
+<dl><dd>
+  Node itself.
+</dd></dl>
+
+<p><b>Notes</b></p>
+
+<p>(a) By default, all leaf nodes are deleted.</p>
+
+<div class="toc-anchor"></div><h3>get_nodes()</h3>
+
+<pre class="py-sign">HPSNode.<b>get_nodes</b>(<em>self</em>, postproc=<span>None</span>)</pre>
+
+<p>Fetches leaf nodes from the unit.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>postproc</code> : <em>Callable = None</em></span></p>
+
+<dl><dd>
+  Post-processor of the nodes.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>list</em></span></p>
+
+<dl><dd>
+  Fetched nodes.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>set_nodes()</h3>
+
+<pre class="py-sign">HPSNode.<b>set_nodes</b>(<em>self</em>, bank)</pre>
+
+<p>Sets data on the leaf nodes.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>bank</code> : <em>Callable | Iterable</em></span></p>
+
+<dl><dd>
+  Data on leaf nodes as a function or stack.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>self</em></span></p>
+
+<dl><dd>
+  Node itself.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>run_nodes()</h3>
+
+<pre class="py-sign">HPSNode.<b>run_nodes</b>(<em>self</em>, method_name, *args, **kwargs)</pre>
+
+<p>Runs a method on the data of leaf nodes.</p>
+
+<p><b>Parameters</b></p>
+
+<p><span class="vardef"><code>method_name</code> : <em>str</em></span></p>
+
+<dl><dd>
+  Name of the method.
+</dd></dl>
+
+<p><span class="vardef"><code>args</code> : <em>tuple</em></span></p>
+
+<dl><dd>
+  Positional arguments of the method.
+</dd></dl>
+
+<p><span class="vardef"><code>kwargs</code> : <em>dict</em></span></p>
+
+<dl><dd>
+  Keyword arguments of the method.
+</dd></dl>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>self</em></span></p>
+
+<dl><dd>
+  Node itself.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>get_tree()</h3>
+
+<pre class="py-sign">HPSNode.<b>get_tree</b>(<em>self</em>) → <em>list</em></pre>
+
+<p>Returns all nodes of the tree as a list.</p>
+
+<div class="toc-anchor"></div><h3>make_sol()</h3>
+
+<pre class="py-sign">HPSNode.<b>make_sol</b>(<em>self</em>)</pre>
+
+<p>Computes the global solution.</p>
+
+<div class="toc-anchor"></div><h3>make_opr()</h3>
+
+<pre class="py-sign">HPSNode.<b>make_opr</b>(<em>self</em>)</pre>
+
+<p>Builds the global solution operator.</p>
+
+<div class="toc-anchor"></div><h3>make_dtn_leaf()</h3>
+
+<pre class="py-sign">HPSNode.<b>make_dtn_leaf</b>(<em>self</em>)</pre>
+
+<p>Builds the DtN operators on leaf nodes.</p>
+
+<div class="toc-anchor"></div><h3>make_sol_leaf()</h3>
+
+<pre class="py-sign">HPSNode.<b>make_sol_leaf</b>(<em>self</em>)</pre>
+
+<p>Builds the solution on leaf nodes.</p>
+
+<div class="toc-anchor"></div><h2>HPSData</h2>
+
+<pre class="py-sign"><b><em>class</em></b> hpsolver.hps.<b>HPSData</b>(x_1, x_2, body=<span>None</span>)</pre>
+
+<p>ABC for HPS-Data.</p>
+
+<p><b>Attributes</b></p>
+
+<p><span class="vardef"><code>body</code> : <em>matrix-like</em></span></p>
+
+<dl><dd>
+  Raw data on the HPS node.
+</dd></dl>
+
+<p><b>Properties</b></p>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>x12</code></td>
+        <td>Interval as a tuple.</td>
+    </tr>
+    <tr>
+        <td><code>d_x</code></td>
+        <td>Width of the interval.</td>
+    </tr>
+    <tr>
+        <td><code>u_1</code></td>
+        <td>West value of the solition.</td>
+    </tr>
+    <tr>
+        <td><code>u_2</code></td>
+        <td>East value of the solition.</td>
+    </tr>
+</table>
+
+<div class="toc-anchor"></div><h3>new_body_west()</h3>
+
+<pre class="py-sign">HPSData.<b>new_body_west</b>(<em>self</em>)</pre>
+
+<p>Creates the new body for the west children.</p>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>matrix-like</em></span></p>
+
+<dl><dd>
+  New body of the west children.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>new_body_east()</h3>
+
+<pre class="py-sign">HPSData.<b>new_body_east</b>(<em>self</em>)</pre>
+
+<p>Creates the new body for the east children.</p>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>matrix-like</em></span></p>
+
+<dl><dd>
+  New body of the east children.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>new_body_join()</h3>
+
+<pre class="py-sign">HPSData.<b>new_body_join</b>(<em>self</em>, west_data, east_data)</pre>
+
+<p>Creates the new body from the children data.</p>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>matrix-like</em></span></p>
+
+<dl><dd>
+  New body merged from the children data.
+</dd></dl>
+
+<div class="toc-anchor"></div><h3>mat_from_body()</h3>
+
+<pre class="py-sign">HPSData.<b>mat_from_body</b>(<em>self</em>) → <em>dict</em></pre>
+
+<p>Makes the DtN matrix from a body.</p>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>dict</em></span></p>
+
+<dl><dd>
+  Matrix entries as arrays.
+</dd></dl>
+
+<p><b>Notes</b></p>
+
+<p>Keys must be <code>a11</code>, <code>a12</code>, <code>a21</code>, <code>a22</code>.</p>
+
+<div class="toc-anchor"></div><h3>vec_from_body()</h3>
+
+<pre class="py-sign">HPSData.<b>vec_from_body</b>(<em>self</em>) → <em>dict</em></pre>
+
+<p>Makes the DtN vector from a body.</p>
+
+<p><b>Returns</b></p>
+
+<p><span class="vardef"><em>dict</em></span></p>
+
+<dl><dd>
+  Vector entries as arrays.
+</dd></dl>
+
+<p><b>Notes</b></p>
+
+<p>Keys must be <code>b_1</code>, <code>b_2</code>.</p>
+
+<div class="toc-anchor"></div><h3>make_sol()</h3>
+
+<pre class="py-sign">HPSData.<b>make_sol</b>(<em>self</em>) → <em>None</em></pre>
+
+<p>Transfer the solution from the DtN operator to the body.</p>
+
+<p><b>Notes</b></p>
+
+<p>Transfers <code>u_1</code> and <code>u_2</code> to the body.</p>
+
+<div class="toc-anchor"></div><h2>HPSGeom</h2>
+
+<pre class="py-sign"><b><em>class</em></b> hpsolver.hps.<b>HPSGeom</b>(x_1, x_2, body=<span>None</span>)</pre>
+
+<p>HPS-Geometry data.</p>
+
+<p>
+<ul class="md-list">
+    <li>Derived from <code>HPSData</code>.</li>
+    <li>Contains no body.</li>
+</ul>
+</p>
+
+<div class="toc-anchor"></div><h2>HPSPoisson</h2>
+
+<pre class="py-sign"><b><em>class</em></b> hpsolver.hps.<b>HPSPoisson</b>(x_1, x_2, body=<span>None</span>)</pre>
+
+<p>HPS-Poisson data.</p>
+
+<p>
+<ul class="md-list">
+    <li>Derived from <code>HPSData</code>.</li>
+    <li>Implements P1-FEM for the Poisson equation.</li>
+</ul>
+</p>
+
+<p><b>Attributes</b></p>
+
+<p><span class="vardef"><code>body</code> : <em>2x2-float-matrix.</em></span></p>
+
+<dl><dd>
+  Potential and density stored row-by-row.
+</dd></dl>
+
+<p><b>Notes</b></p>
+
+<p>Operator used:</p>
+
+<pre class="docstring">Uxx = Rho</pre>
+
+<p>with <code>U</code> being the potential and <code>Rho</code> being the density.</p>
+
+<hr>
+        </div>
+        <p id="footnote">Copyright &copy; <span id="year"></span>, Igor Semenov.</p>
+    </div>
+
+    <footer></footer>
+
+    <script>
+        setDocPage();
+    </script>
+
+</body>
+
+</html>
